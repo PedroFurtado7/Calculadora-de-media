@@ -1,0 +1,131 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+
+float calcularMediaA1A2A3();
+float calcularMediaA4();
+float calcularMediaOnline();
+
+int main()
+{
+    setlocale(LC_ALL, "Portuguese");
+    int opcao;
+
+    printf("-------Calculadora de Médias UVA-------\n");
+    printf("Qual é o formato da avaliação?\n");
+    printf("1- A1 - A2 - A3\n");
+    printf("2- A4\n");
+    printf("3- Online\n");
+    printf("-------------------------------------------\n");
+    printf("Digite a opção: ");
+    scanf("%d", &opcao);
+
+    switch (opcao)
+    {
+        case 1:
+            calcularMediaA1A2A3();
+            break;
+        case 2:
+            calcularMediaA4();
+            break;
+        case 3:
+            calcularMediaOnline();
+            break;
+        default:
+            printf("Opção inválida.\n");
+            break;
+    }
+
+    return 0;
+}
+
+float calcularMediaA1A2A3()
+{
+    float A1, A2, A3, soma;
+
+    printf("\n----------Cálculo da A1, A2 e A3--------------\n");
+    printf("Nota da A1: ");
+    scanf("%f", &A1);
+    printf("Nota da A2: ");
+    scanf("%f", &A2);
+    printf("Nota da A3: ");
+    scanf("%f", &A3);
+
+    if (A3 > A2)
+    {
+        soma = (A3 + A1) / 2;
+    }
+    else
+    {
+        soma = (A1 + A2) / 2;
+    }
+
+    if (soma >= 7)
+    {
+        printf("\nParabéns, você passou. Sua média final foi de: %.2f\n", soma);
+    }
+    else
+    {
+        printf("\nInfelizmente, você foi reprovado. Sua média final foi de: %.2f\n", soma);
+    }
+
+    return soma;
+}
+
+float calcularMediaA4()
+{
+    float A4;
+
+    printf("\n----------Cálculo da A4--------------\n");
+    printf("Nota da A4 ou Online: ");
+    scanf("%f", &A4);
+
+    if (A4 >= 7)
+    {
+        printf("\nParabéns, você passou. Sua média final foi de: %.2f\n", A4);
+    }
+    else
+    {
+        printf("\nInfelizmente, você foi reprovado. Sua média final foi de: %.2f\n", A4);
+    }
+
+    return A4;
+}
+
+float calcularMediaOnline()
+{
+    float AVA1, AVA2, A2, A3, soma;
+
+    printf("\n----------Cálculo Online--------------\n");
+    printf("Nota da AVA1: ");
+    scanf("%f", &AVA1);
+    printf("Nota da AVA2: ");
+    scanf("%f", &AVA2);
+
+    printf("\nA sua nota da A1 foi: %.2f\n", (AVA1 + AVA2) / 2);
+
+    printf("Nota A2: ");
+    scanf("%f", &A2);
+    printf("Nota A3: ");
+    scanf("%f", &A3);
+
+    if (A2 > A3)
+    {
+        soma = ((AVA1 + AVA2) / 2 * 0.4) + (A2 * 0.6);
+    }
+    else
+    {
+        soma = ((AVA1 + AVA2) / 2 * 0.4) + (A3 * 0.6);
+    }
+
+    if (soma >= 7)
+    {
+        printf("\nParabéns, você passou. Sua média final foi de: %.2f\n", soma);
+    }
+    else
+    {
+        printf("\nInfelizmente, você foi reprovado. Sua média final foi de: %.2f\n", soma);
+    }
+
+    return soma;
+}
